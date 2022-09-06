@@ -15,26 +15,30 @@ def merge(x: list[int], y: list[int]) -> list[int]:
     z = []  # a new list to copy elements into
     # FIXME: fill out the loop so you merge the lists
     # until one of them is empty
-    if (bool(x) and bool(y)) == False:
-        return x or y
+    # if (bool(x) and bool(y)) == False:
+    #    return x or y
 
     # sooo, dont do both at the same time. is bad
     while i < len(x) and j < len(y):
 
         if x[i] < y[j]:
             z.append(x[i])
-            i = +1
-        elif y[j] >= x[i]:
+            i += 1
+        else:
             z.append(y[j])
             j += 1
 
         # FIXME: you shouldn't just break here
         # At least one of the lists is empty now. Copy the
     # remainder of the other into z.
-    if j == len(y):
-        z.append(x[i:])
-    elif i == len(x):
-        z.append(y[j:])
+    if i < len(x):
+        z.extend(x[i:])
+    if j < len(y):
+        z.extend(y[j:])
+    # if j == len(y):
+    #     z.extend(x[i:])
+    # elif i == len(x):
+    #     z.extend(y[j:])
     return z
 
 
